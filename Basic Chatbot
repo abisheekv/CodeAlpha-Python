@@ -1,0 +1,24 @@
+# basic_chatbot.py
+def get_response(msg: str) -> str:
+    text = msg.lower().strip()
+
+    if text in ("hello", "hi"):
+        return "Hi!"
+    elif text in ("how are you", "how are you?"):
+        return "I'm fine, thanks!"
+    elif text in ("bye", "goodbye"):
+        return "Goodbye!"
+    else:
+        return "I don't understand. Try: hello / how are you / bye."
+
+def main():
+    print("Basic Chatbot (type 'exit' to quit)")
+    while True:
+        user = input("You: ")
+        if user.lower() == "exit":
+            print("Bot: Goodbye!")
+            break
+        print("Bot:", get_response(user))
+
+if __name__ == "__main__":
+    main()
