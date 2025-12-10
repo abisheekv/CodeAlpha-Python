@@ -1,0 +1,35 @@
+# stock_portfolio.py
+PRICES = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "INFY": 1500,
+    "TCS": 3800
+}
+
+def main():
+    print("Simple Stock Portfolio Tracker")
+    print("Known prices:", PRICES)
+
+    total_value = 0.0
+
+    while True:
+        symbol = input("Enter stock symbol (or 'done'): ").upper()
+        if symbol == "DONE":
+            break
+        if symbol not in PRICES:
+            print("Unknown symbol, try again.")
+            continue
+        try:
+            qty = int(input("Quantity: "))
+        except ValueError:
+            print("Enter a valid integer quantity.")
+            continue
+
+        value = PRICES[symbol] * qty
+        total_value += value
+        print(f"Added {qty} x {symbol} = {value}")
+
+    print("Total portfolio value:", total_value)
+
+if __name__ == "__main__":
+    main()
