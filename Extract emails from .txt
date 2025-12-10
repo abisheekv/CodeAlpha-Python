@@ -1,0 +1,19 @@
+# extract_emails.py
+import re
+
+input_file = "input.txt"
+output_file = "emails.txt"
+
+email_pattern = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
+
+emails = set()
+
+with open(input_file, "r", encoding="utf-8") as f:
+    for line in f:
+        emails.update(re.findall(email_pattern, line))
+
+with open(output_file, "w", encoding="utf-8") as f:
+    for e in sorted(emails):
+        f.write(e + "\n")
+
+print("Saved emails to", output_file)
